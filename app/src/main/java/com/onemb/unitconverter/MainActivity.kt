@@ -1,6 +1,7 @@
 package com.onemb.unitconverter
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -74,6 +75,9 @@ fun UnitConverter() {
     val result = remember {
         mutableStateOf("");
     };
+    val displayConvertBtn = remember {
+        mutableStateOf(false)
+    }
     Column (
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -86,6 +90,15 @@ fun UnitConverter() {
         OutlinedTextField(
             value = inputBoxValue.value,
             onValueChange = {
+                System.out.println(it)
+                try {
+                    displayConvertBtn.value = true;
+                    System.out.println(it.toDouble())
+                } catch (err: Throwable) {
+                    displayConvertBtn.value = false;
+                    System.out.println(err)
+                }
+
                 inputBoxValue.value = it;
             },
             label = { Text(text = "Enter Value", color = Color.Black)},
@@ -113,7 +126,7 @@ fun UnitConverter() {
             ErrorUi()
         } 
         heightSpace();
-        if(!inputDropDownselectItem.value.equals(outputDropDownselectItem.value)) {
+        if(!inputDropDownselectItem.value.equals(outputDropDownselectItem.value) && displayConvertBtn.value) {
             Button(onClick = {
                 doConversion(
                     inputDropDownselectItem,
@@ -126,7 +139,7 @@ fun UnitConverter() {
             }
         }
         heightSpace();
-        if(!result.value.equals("")) {
+        if(!result.value.equals("") && displayConvertBtn.value) {
             Text(text = "There are " + result.value + " " + outputDropDownselectItem.value + " in " + inputBoxValue.value + " " + inputDropDownselectItem.value);
         }
         
@@ -140,7 +153,7 @@ fun inputBox(iDropOpen: MutableState<Boolean>, inputDropDownListItems: List<Stri
             Text(text = "Convert From:")
             Button(onClick = {iDropOpen.value = iDropOpen.value.not()}) {
                 Text(text = inputDropDownselectItem.value.uppercase())
-                Icon(Icons.Default.ArrowDropDown, contentDescription = "Select Drop down")
+                Icon(Icons.Default.ArrowDropDown, contentDescription = "Select Drop down for input unit")
             }
             DropdownMenu(expanded = iDropOpen.value, onDismissRequest = {
                 iDropOpen.value = iDropOpen.value.not();
@@ -160,7 +173,7 @@ fun OutPutBox(oDropOpen: MutableState<Boolean>, inputDropDownListItems: List<Str
             Text(text = "Convert To:")
             Button(onClick = {oDropOpen.value = oDropOpen.value.not()}) {
                 Text(text = outputDropDownselectItem.value.uppercase())
-                Icon(Icons.Default.ArrowDropDown, contentDescription = "Select Drop down")
+                Icon(Icons.Default.ArrowDropDown, contentDescription = "Select Drop down for output unit")
             }
             DropdownMenu(expanded = oDropOpen.value, onDismissRequest = {
                 oDropOpen.value = oDropOpen.value.not();
