@@ -6,7 +6,7 @@
   We do not collect any personally identifiable information, such as names, addresses, or contact details, unless explicitly provided by the user.
 
 - **Usage Data:**
-  We may collect non-personal information about how the website is accessed and used. This may include browser types, IP addresses, and other statistical data.
+  We may collect non-personal information about how the app is accessed and used. This may include browser types, IP addresses, and other statistical data.
 
 ## Use of Information
 
@@ -14,15 +14,15 @@
   Any personal information provided by users will only be used for the purpose for which it was collected.
 
 - **Usage Data:**
-  Non-personal information may be used to analyze and improve the performance and functionality of the website.
+  Non-personal information may be used to analyze and improve the performance and functionality of the app.
 
 ## Cookies
 
-We do not use cookies on this website.
+We do not use cookies on this app.
 
 ## Third-Party Services
 
-This website may include links to third-party websites or services. We are not responsible for the privacy practices or content of these external sites.
+This app may include links to third-party apps or services. We are not responsible for the privacy practices or content of these external sites.
 
 ## Changes to this Privacy Policy
 
