@@ -28,3 +28,6 @@ google-services.json
 
 # Android Profiling
 *.hprof
+*.aab
+app/release/output-metadata.json
+app/release/app-release.aab
